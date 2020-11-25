@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header />
+    <AppHeader />
     <div class="app-container container-fluid">
         <SearchResults />
     </div>
