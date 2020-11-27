@@ -20,6 +20,7 @@
     import AlbumList from '@/components/AlbumList'
     import ArtistList from '@/components/ArtistList'
     import TrackList from '@/components/TrackList'
+
     export default {
         name:'SearchResults',
         components: {

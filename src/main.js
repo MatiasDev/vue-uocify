@@ -17,6 +17,8 @@ Vue.component('fa-icon', FontAwesomeIcon) // definimos el componente <fa-icon> p
 Vue.use(BootstrapVue) // instala BootstrapVue
 Vue.config.productionTip = false
 
+
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
