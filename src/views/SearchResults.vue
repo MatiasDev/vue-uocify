@@ -1,14 +1,18 @@
 <template>
-    <main class="page-search">
-        <h1 class="main-title">Resultados...</h1>
+    <main class="page-search container">
+        <h1>Resultados de <span>{{query}}</span></h1>
 
             <!-- TABS -->
-            <div>
+            <div class="container contenedor-resultados">
             <b-tabs content-class="mt-3">
-                <b-tab title="Todo" active><p>I'm the first tab</p></b-tab>
-                <b-tab title="Canciones"><TrackList/></b-tab>
-                <b-tab title="Álbumes"><AlbumList/></b-tab>
-                <b-tab title="Artistas"><ArtistList/></b-tab>
+                <b-tab title="Todo" active>
+                    <TrackList :limit=6 />
+                    <AlbumList :limit=6 />
+                    <ArtistList :limit=6 />
+                </b-tab>
+                <b-tab title="Canciones"><TrackList :limit=50 /></b-tab>
+                <b-tab title="Álbumes"><AlbumList :limit=50 /></b-tab>
+                <b-tab title="Artistas"><ArtistList :limit=50 /></b-tab>
             </b-tabs>
             </div>
 
@@ -16,7 +20,7 @@
 </template>
 
 <script>
-
+    import { EventBus } from '@/event-bus.js';
     import AlbumList from '@/components/AlbumList'
     import ArtistList from '@/components/ArtistList'
     import TrackList from '@/components/TrackList'
@@ -26,7 +30,24 @@
         components: {
             AlbumList, 
             ArtistList, 
-            TrackList, 
+            TrackList
+        },
+        data(){
+            return{
+                query:""
+            }
+        },
+        created(){
+            EventBus.$on('query', this.onQueryUpdated)
+        },
+        beforeDestroy(){
+            EventBus.$off("query", this.onQueryUpdated)
+        },
+        methods: {
+            onQueryUpdated(query){
+                this.query = query
+                console.log(query)
+            }
         }
     }
 </script>
@@ -46,6 +67,7 @@
                 color: $grey-label;
             }
         }
+
 
 
         /* TABS */ 

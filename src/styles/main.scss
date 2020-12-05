@@ -4,3 +4,26 @@
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
 @import "./_base.scss";
 @import "./_auth.scss";
+
+.contenedor-resultados{
+    background-color: #fff;
+}
+
+h1{
+    font-weight: 900;
+}
+h1 span{
+    color:#8F8F8F;
+}
+
+h1{
+    font-weight: 900;
+    font-size: 1.6rem;
+}
+
+h2{
+    font-weight: 800;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

@@ -30,31 +30,42 @@
 
 
 <style lang="scss">
-    .header{
-        box-shadow: 0 0 10px -5px #999;
-        background-color: #fff;
-        position:fixed;
-        z-index: 999;
-         z-index: 100;
-    }
+  .header{
+      box-shadow: 0 0 10px -5px #999;
+      background-color: #fff;
+      position:fixed;
+      z-index: 999;
 
-    .logo-cabecera{
-        width:130px;
-        height:auto;
-        margin-left:12px;
-    }
+    .input-group-text{
+            border:0;
+            background-color: #fff;
+            font-size: 0.8rem;
+            padding:2px;
+        }
+        .form-control{
+            border:0;
+            font-size: 0.8rem;
+        }
 
-    .nombre-usuario{
-        font-size: 0.7rem;
-        font-weight: 600;
-        margin-right:10px;
-    }  
+      .logo-cabecera{
+          width:130px;
+          height:auto;
+          margin-left:12px;
+      }
 
-    .ico-usuario{
-        background-color: #eee;
-        padding:6px;
-        border-radius: 50%;
-        font-size:0.8rem
-    }   
+      .nombre-usuario{
+          font-size: 0.7rem;
+          font-weight: 600;
+          margin-right:10px;
+      }  
+
+      .ico-usuario{
+          background-color: #eee;
+          padding:6px;
+          border-radius: 50%;
+          font-size:0.8rem
+      } 
+      
+  }
 
 </style>

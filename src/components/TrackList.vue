@@ -14,8 +14,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="track in tracks" :key="track.id">
-                <td><img src="@/assets/albums/let-it-be.jpg" class="img-fluid" alt="Foto del albúm Let It Be (Remastered)"></td>
+            <tr v-for="track in controlFilteredResults" :key="track.id">
+                <td><img v-bind:src="track.album.cover_small" class="img-fluid" alt="Foto del albúm Let It Be (Remastered)"></td>
                 <td>{{track.title}}</td>
                 <td>{{track.artist.name}}</td>
                 <td>{{track.album.title}}</td>
@@ -29,9 +29,21 @@
 <script>
 export default {
     name:"TrackList",
+    props:{
+        limit:Number
+    },
     data() {
         return {
         tracks: TrackData.data,
+        }
+    },
+    computed: {
+        controlFilteredResults() {
+            if (this.limit) {
+                return this.tracks.slice(0,(this.limit-1))
+            } else {
+                return this.tracks
+            }
         }
     },
     filters:{
@@ -54,5 +66,25 @@ import TrackData from "@/json/tracks.json";
 </script>
 
 <style>
+.contenedorCanciones{
+    margin-bottom: 1.5rem;
+}
 
+.contenedorCanciones .table thead th {
+    font-size:0.6rem;
+    color:#666;
+}
+.contenedorCanciones .table thead th {
+    border-bottom:1px;
+    padding: .7rem;
+}
+
+#tablaCanciones img{
+    max-width:28px;
+    border-radius: 3px;
+}
+#tablaCanciones td{
+    font-size: 0.7rem;
+    vertical-align: middle;
+}
 </style>

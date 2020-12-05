@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import router from './router'
 import App from './App.vue'
 import { BootstrapVue } from 'bootstrap-vue'
 
@@ -17,8 +18,7 @@ Vue.component('fa-icon', FontAwesomeIcon) // definimos el componente <fa-icon> p
 Vue.use(BootstrapVue) // instala BootstrapVue
 Vue.config.productionTip = false
 
-
-
 new Vue({
-  render: h => h(App),
+  router,
+  render: h => h(App)
 }).$mount('#app')
