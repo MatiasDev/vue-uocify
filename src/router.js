@@ -1,5 +1,7 @@
 import Home from '@/views/Home'
 import SearchResults from '@/views/SearchResults'
+import Login from '@/views/Login'
+import Register from '@/views/Register'
 
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -18,6 +20,16 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: SearchResults
-    }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+    },
   ]
 })

@@ -9,21 +9,55 @@
         <SearchBar/>
     </div>
     
-    <div class="align-self-center p-2">
+    <div class="align-self-center p-2" v-if="isLoggedIn">
       <span class="nombre-usuario">Matias</span>
       <span class="ico-usuario"><fa-icon icon="user" /></span>
+      <span class="ico-logout"><fa-icon icon="sign-out-alt" @click="logout()" /></span>
     </div>
-    
+    <div class="align-self-center p-2" v-else>
+      <router-link to="login" class="alink-header">Inicia sesión</router-link>
+      <router-link to="register" class="alink-header">Regístrate</router-link>
+    </div>
+
   </header>
 </template>
 
 
 <script>
-    import SearchBar from '@/components/SearchBar'
+    import SearchBar from '@/components/SearchBar';
+    import firebase from 'firebase';
+
     export default {
         name:'AppHeader',
         components: {
             SearchBar, 
+         },
+         data(){
+           return {
+             isLoggedIn:false,
+             currentUser:null
+           }
+         },
+         created(){
+          firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+              this.currentUser = user;
+              this.isLoggedIn=true;
+            } else {
+              this.user = null;
+              this.isLoggedIn=false;
+            }
+          });
+
+         },
+         methods: {
+          logout: function() {
+            firebase.auth().signOut().then(() => {
+                firebase.auth().onAuthStateChanged(() => {
+                  this.$router.push('/login')
+                })
+              })
+          }
          }
     }
 </script>
@@ -53,7 +87,7 @@
           margin-left:12px;
       }
 
-      .nombre-usuario{
+      .nombre-usuario,.alink-header{
           font-size: 0.7rem;
           font-weight: 600;
           margin-right:10px;
@@ -63,8 +97,17 @@
           background-color: #eee;
           padding:6px;
           border-radius: 50%;
-          font-size:0.8rem
-      } 
+          font-size:0.8rem;
+          margin-right:10px;
+      }
+
+      .ico-logout{
+        cursor: pointer;
+        &:hover{
+          color:red;
+        }
+      }
+
       
   }
 

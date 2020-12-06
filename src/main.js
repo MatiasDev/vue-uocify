@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import App from './App.vue'
 import { BootstrapVue } from 'bootstrap-vue'
+import './firebase';
 
 // font awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
