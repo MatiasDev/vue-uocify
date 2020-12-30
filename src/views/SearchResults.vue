@@ -31,32 +31,57 @@
 
 <script>
 
-import albumsjson from "@/json/albums.json";
-import artistsjson from "@/json/artists.json";
-import tracksjson from "@/json/tracks.json";
 import TrackList from '@/components/Tracks/TrackList'
 import AlbumList from '@/components/Albums/AlbumList'
 import ArtistList from '@/components/Artists/ArtistList'
+
+import {getTracks,getAlbums,getArtists} from "../api.js";
 
 export default {
     name:'SearchResults',
     components:{ AlbumList, ArtistList, TrackList },
     data(){
         return{
-            tracks: tracksjson.data,
-            albums: albumsjson.data,
-            artists: artistsjson.data,
-            tracksTotal: tracksjson.total,
-            albumsTotal: albumsjson.total,
-            artistsTotal: artistsjson.total,
+            tracks:[],
+            albums:[],
+            artists:[],
+            tracksTotal:null,
+            albumsTotal:null,
+            artistsTotal:null,
             query: this.$route.params.q || ''
         }
     },    
     watch: {
         '$route.params.q': function (q) {
             this.query = q
+            this.updateTracks(q);
+            this.updateAlbums(q);
+            this.updateArtists(q);
         }
     }, 
+    methods:{
+        updateTracks : function(query){
+                    getTracks(query).then(data => {
+                        this.tracks = data.data;
+                        this.tracksTotal = data.total;
+                        
+                    })
+                },
+        updateAlbums  : function(query){
+                    getAlbums(query).then(data => {
+                        this.albums = data.data;
+                        this.albumsTotal = data.total;
+                        //console.log(this.albums)
+                    })
+                },
+        updateArtists : function(query){
+                    getArtists(query).then(data => {
+                        this.artists = data.data;
+                        this.artistsTotal = data.total;
+                        //console.log(this.artists)
+                    })
+                }
+    }
 }
 </script>
 

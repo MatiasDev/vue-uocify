@@ -1,27 +1,27 @@
 <template>
-    <article class="artist col-sm-6 col-md-4 col-lg-3 col-xl-2">
-        <img class="artist-picture" :src="artist.picture_medium" :alt="artist.name">
-        <span class="artist-name">{{artist.name}}</span>
-        <span class="artist-fans">{{artist.nb_fan | separadorCentenas }}</span>
+    <article class="playlist col">
+        <router-link :to="{ name: 'playlist', params: {idplaylist: playlist.id }}"><img class="playlist-cover" :src="playlist.picture_medium" :alt="playlist.title"></router-link>
+        <span class="playlist-title">{{playlist.title}}</span>
+        <span class="playlist-user">{{playlist.user.name}}</span>
     </article>
 </template>
 
 <script>
 
 export default {
-    name: 'Artist',
-    props: { artist: Object }    
+    name: 'Playlists',
+    props: { playlist: Object },
 }
 </script>
 
 <style lang="scss">
-    .artist{
+    .playlist{
         margin-bottom: 15px;
         text-align: center;
         line-height: 1.3em;
     }
 
-    .artist-name{
+    .playlist-title{
         display: block;
         font-size: 14px;
         overflow: hidden;
@@ -30,11 +30,11 @@ export default {
         font-weight: 600;    
     }
 
-    .artist-fans{
+    .playlist-user{
         font-size: 12px;
     }
 
-    .artist-picture{
+    .playlist-cover{
         width: 100%;
         height: auto;
         margin-bottom: 10px;
@@ -43,4 +43,5 @@ export default {
         border: 1px solid $border-color;
         display: block;
     }
+    
 </style>

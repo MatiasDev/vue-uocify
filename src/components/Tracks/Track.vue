@@ -13,7 +13,7 @@
             {{track.album.title}}
         </td>
         <td class="track-duration">
-            {{ getDuration }}
+            {{ this.track.duration | formatoMMSS }}
         </td>                                
     </tr>
 </template>
@@ -23,16 +23,6 @@ export default {
     name: 'Track',
     props: { 
         track: Object, 
-    },
-    computed: {
-        getDuration: function () {
-            const hours = Math.floor(this.track.duration / 60);          
-            const minutes = this.track.duration % 60;
-            const hh = hours < 10 ? `0${hours}` : hours;
-            const mm = minutes < 10 ? `0${minutes}` : minutes;
-
-            return `${hh}:${mm}`;
-        },  
     }
 }
 </script>

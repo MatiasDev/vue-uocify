@@ -4,6 +4,7 @@ import Home from '@/views/Home'
 import SearchResults from '@/views/SearchResults'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
+import Playlist from '@/views/Playlist'
 import NotFound from '@/views/NotFound'
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ Vue.use(VueRouter)
     path: '/search/:q',
     name:'search',
     component: SearchResults
+  },
+  {
+    path: '/playlist/:idplaylist',
+    name:'playlist',
+    component: Playlist
   },  
   {
       path: '*',
