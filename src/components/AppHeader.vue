@@ -2,8 +2,8 @@
     <header class="header">
         <div class="header-container container-fluid">
             <router-link to="/">
-                <img class="logo" src="@/assets/logo.svg" alt="Logo de uocify" width="170">
-                <img class="icono" src="@/assets/icon.svg" alt="Icono de uocify" width="40">
+                <img class="logo" src="@/assets/logo.svg" alt="Logo de uocify" width="170" height="45">
+                <img class="icono" src="@/assets/icon.svg" alt="Icono de uocify" width="40" height="40">
             </router-link>		            
             <search-bar />
             <div v-if="isLoggedIn" class="user">
