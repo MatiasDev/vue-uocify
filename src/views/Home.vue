@@ -6,7 +6,6 @@
             <p class="lorem-textum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tellus arcu, feugiat eu molestie in, finibus sit amet lorem. Phasellus consectetur ipsum in imperdiet ultrices. </p>
             <hr class="mt-4 mb-4">
         </div>
-
         <PlaylistsList :playlists="playlists"></PlaylistsList>
     </main>
 

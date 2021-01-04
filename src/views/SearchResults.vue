@@ -48,17 +48,24 @@ export default {
             tracksTotal:null,
             albumsTotal:null,
             artistsTotal:null,
-            query: this.$route.params.q || ''
+            query: this.$route.params.q || '',
         }
-    },    
+    },  
     watch: {
         '$route.params.q': function (q) {
+            console.log("WATCHA")
             this.query = q
             this.updateTracks(q);
             this.updateAlbums(q);
             this.updateArtists(q);
         }
-    }, 
+    },
+    created(){
+        this.query=this.$route.params.q;
+        this.updateTracks(this.query);
+        this.updateAlbums(this.query);
+        this.updateArtists(this.query);
+    },
     methods:{
         updateTracks : function(query){
                     getTracks(query).then(data => {

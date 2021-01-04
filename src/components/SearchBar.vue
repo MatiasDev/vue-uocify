@@ -2,7 +2,6 @@
     <form @submit.prevent="search" class="search-bar">
         <label class="visibility-hidden" for="buscador">Buscar</label>
         <input id="buscador" type="text" v-model="query" placeholder="Buscar" class="form-control search-control" />
-        
         <button type="submit" aria-label="Buscar" class="btn-icon search-button"><fa-icon icon="search" aria-label="Buscar" /></button>
     </form>
 </template>

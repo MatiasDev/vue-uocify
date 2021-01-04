@@ -23,7 +23,6 @@ export default {
         loadPlaylist : function(idplaylist){
             getPlaylist(idplaylist).then(data => {
                 this.tracks = data;
-                console.log(this.tracks)
             })
         },
 
