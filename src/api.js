@@ -1,7 +1,12 @@
 export async function getPlaylists() {
+    /*
     const res = await fetch("https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/playlists")
     const data = await res.json();
     return data;
+    */
+	// Get the post data
+	var data = await (await fetch('https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/playlists').catch(handleError)).json();
+	if (data.code && data.code === 400) return data;
 }
 
 export async function getPlaylist(idplaylist) {
@@ -28,3 +33,11 @@ export async function getArtists(q) {
     const data = await res.json();
     return data;
 }
+
+var handleError = function (err) {
+	console.warn(err);
+	return new Response(JSON.stringify({
+		code: 400,
+		message: 'Stupid network Error'
+	}));
+};
