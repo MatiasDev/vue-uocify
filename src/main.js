@@ -22,7 +22,7 @@ library.add(faBars, faSearch, faChevronRight, faUser, faSignOutAlt) // añade ic
 Vue.component('fa-icon', FontAwesomeIcon) // definimos el componente <fa-icon> para usar los iconos en los templates
 
 Vue.use(BootstrapVue) // instala BootstrapVue
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 new Vue({
   router,
