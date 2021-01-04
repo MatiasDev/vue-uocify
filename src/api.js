@@ -6,7 +6,11 @@ export async function getPlaylists() {
     */
 	// Get the post data
 	var data = await (await fetch('https://cors-anywhere.herokuapp.com/https://api.deezer.com/chart/0/playlists').catch(handleError)).json();
-	if (data.code && data.code === 400) return data;
+    if (data.code && data.code === 400) return data;
+    else{
+        console.log("El servicio externo no ha respondido")
+        return false;
+    }
 }
 
 export async function getPlaylist(idplaylist) {

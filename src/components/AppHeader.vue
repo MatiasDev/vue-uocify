@@ -25,6 +25,7 @@
 <script>
     import SearchBar from '@/components/SearchBar'
     import firebase from 'firebase'
+    import 'firebase/auth';
 
     export default {
         name:'AppHeader',
