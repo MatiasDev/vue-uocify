@@ -29,7 +29,9 @@ export default {
     methods:{
         loadPlaylists : function(){
             getPlaylists().then(data => {
-                this.playlists = data.data;
+                if(data){
+                    this.playlists = data.data;
+                }
             })
         },
 
