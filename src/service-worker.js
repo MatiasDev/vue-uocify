@@ -1,10 +1,56 @@
+let CACHE_NAME = 'my-cache';
+let urlsToCache = [
+    'css/style.css',  
+    'scripts/index.js'
+    ];
+
+    self.addEventListener('install', function(event) {
+      // Perform install steps
+          event.waitUntil(
+              caches.open(CACHE_NAME)
+              .then(function(cache) {
+                  console.log('Opened cache');
+              return cache.addAll(urlsToCache);
+              })
+          );
+      });
+
+      self.addEventListener('activate', function(event) {
+        var cacheWhitelist = ['pigment'];
+        event.waitUntil(
+          caches.keys().then(function(cacheNames) {
+            return Promise.all(
+              cacheNames.map(function(cacheName) {
+                if (cacheWhitelist.indexOf(cacheName) === -1) {
+                  return caches.delete(cacheName);
+                }
+              })
+            );
+          })
+        );
+      });
+
+      self.addEventListener('fetch', function(event) {
+        event.respondWith(
+          caches.match(event.request)
+            .then(function(response) {
+              // Cache hit - return response
+              if (response) {
+                return response;
+              }
+              return fetch(event.request);
+            }
+          )
+        );
+      });
+
 /*
 const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
 
 // A list of local resources we always want to be cached.
 const PRECACHE_URLS = [
-  '/login',
+
 ];
 
 // The install handler takes care of precaching the resources we always need.
@@ -57,17 +103,3 @@ self.addEventListener('fetch', event => {
 */
 
 
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((r) => {
-          console.log('[Service Worker] Obteniendo recurso: '+e.request.url);
-      return r || fetch(e.request).then((response) => {
-                return caches.open(cacheName).then((cache) => {
-          console.log('[Service Worker] Almacena el nuevo recurso: '+e.request.url);
-          cache.put(e.request, response.clone());
-          return response;
-        });
-      });
-    })
-  );
-});

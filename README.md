@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Ejecutar la aplicación en NETLIFY
+https://nostalgic-snyder-c6798d.netlify.app/
