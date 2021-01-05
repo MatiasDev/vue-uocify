@@ -55,13 +55,14 @@ self.addEventListener('fetch', event => {
   }
 });
 */
+
 self.addEventListener('fetch', (e) => {
   e.respondWith(
     caches.match(e.request).then((r) => {
-          console.log('[Servicio Worker] Obteniendo recurso: '+e.request.url);
+          console.log('[Service Worker] Obteniendo recurso: '+e.request.url);
       return r || fetch(e.request).then((response) => {
                 return caches.open(cacheName).then((cache) => {
-          console.log('[Servicio Worker] Almacena el nuevo recurso: '+e.request.url);
+          console.log('[Service Worker] Almacena el nuevo recurso: '+e.request.url);
           cache.put(e.request, response.clone());
           return response;
         });
