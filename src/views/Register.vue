@@ -10,11 +10,11 @@
         <form>
             <div class="form-group">
               <label class="form-label" for="username">Email</label>
-              <input placeholder="Correo electrónico" type="email" id="email" v-model="email" class="form-control">
+              <input placeholder="Correo electrónico" type="email" id="email" v-model="email" class="form-control"  autocomplete="username">
             </div>
             <div class="form-group">
               <label class="form-label" for="password">Contraseña</label>
-              <input placeholder="Contraseña" type="password" id="password" v-model="password" class="form-control">
+              <input placeholder="Contraseña" type="password" id="password" v-model="password" class="form-control" autocomplete="new-password">
             </div>
             <button v-on:click="register" class="btn btn-primary btn-lg">Registrar</button>
         </form>

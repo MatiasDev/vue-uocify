@@ -9,11 +9,11 @@
       <form>
           <div class="form-group">
             <label class="form-label" for="username">Email</label>
-            <input placeholder="Correo electrónico" type="email" id="email" v-model="email" class="form-control">
+            <input placeholder="Correo electrónico" type="email" id="email" v-model="email" class="form-control" autocomplete="username">
           </div>
           <div class="form-group">
             <label class="form-label" for="password">Contraseña</label>
-            <input placeholder="Contraseña" type="password" id="password" v-model="password" class="form-control">
+            <input placeholder="Contraseña" type="password" id="password" v-model="password" class="form-control" autocomplete="current-password">
           </div>
           <button v-on:click="login" class="btn btn-primary btn-lg">Iniciar sesión</button>
       </form>
@@ -29,7 +29,9 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+
+import auth from 'firebase/app'
+import 'firebase/auth';
 
 export default {
   name: 'login',
@@ -42,7 +44,7 @@ export default {
   },
   methods: {
     login: function(e) {
-      firebase
+      auth
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then(

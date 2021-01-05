@@ -24,7 +24,7 @@
 
 <script>
     import SearchBar from '@/components/SearchBar'
-    import firebase from 'firebase'
+    import auth from 'firebase/app'
     import 'firebase/auth';
 
     export default {
@@ -37,7 +37,7 @@
             };
         },
         created() {
-            firebase.auth().onAuthStateChanged((user) => {
+            auth.auth().onAuthStateChanged((user) => {
                 if (user != null) {
                     this.currentUser = user.email;
                     this.isLoggedIn = true;
@@ -49,7 +49,7 @@
         },
         methods: {
             logout: function() {
-                firebase
+                auth
                     .auth()
                     .signOut()
                     .then(() => {
