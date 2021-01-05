@@ -17,6 +17,7 @@ module.exports = {
     appleMobileWebAppCapable: 'yes', 
     appleMobileWebAppStatusBarStyle: '#1F1F89',
     assetsVersion:1.0,
+    categories: ["musica", "practicas", "vuejs"],
     start_url: "/",
     display: "standalone",
     iconPaths:{
