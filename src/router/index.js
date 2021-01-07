@@ -5,6 +5,7 @@ import SearchResults from '@/views/SearchResults'
 import Login from '@/views/Login'
 import Register from '@/views/Register'
 import Playlist from '@/views/Playlist'
+import Detail from '@/views/Artist'
 import NotFound from '@/views/NotFound'
 
 Vue.use(VueRouter)
@@ -34,6 +35,11 @@ Vue.use(VueRouter)
     path: '/playlist/:idplaylist',
     name:'playlist',
     component: Playlist
+  }, 
+  {
+    path: '/artist/:idartist',
+    name:'artist',
+    component: Detail
   },  
   {
       path: '*',

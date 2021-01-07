@@ -24,4 +24,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Ejecutar la aplicación en NETLIFY
-https://matmattack.netlify.app/
+https://uocify-jmbautista.netlify.app/

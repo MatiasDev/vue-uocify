@@ -1,9 +1,12 @@
 <template>
     <article class="album col-sm-6 col-md-4 col-lg-3 col-xl-2">
         <img class="album-cover" :src="album.cover_medium" :alt="album.title">
-        <span class="album-title">{{album.explicit_lyrics}}</span>
-        <span class="album-title">{{album.title}}</span>
-        <span class="album-artist">{{album.artist.name}}</span>
+
+        <span class="album-title">
+            <fa-icon v-if="album.explicit_lyrics==true" icon="exclamation-triangle" class="icon" title="Explicit lyrics" />
+            {{album.title}}
+        </span>
+        <span class="album-artist" v-if="album.artist">{{album.artist.name}}</span>
     </article>
 </template>
 

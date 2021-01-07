@@ -1,36 +1,35 @@
 <template>
     <main class="page-search">
-        <h1 class="main-title">Playlist de <span>{{playlistTitle}}</span></h1>
-        <track-list :tracks="tracks" />
+        <h1 class="main-title">Ficha de <span>{{artist.name}}</span></h1>
+        <detail :artist="artist" />
     </main>
 </template>
 
 <script>
 
-import TrackList from '@/components/Tracks/TrackList'
-import {getPlaylist} from "../api.js";
+import Detail from '@/components/Artists/Detail'
+import {getArtist} from "../api.js";
 
 export default {
-    name:'Playlist',
-    components:{ TrackList },
+    name:'Artist',
+    components:{ Detail },
     data(){
         return{
-            tracks: [],
-            playlistTitle: "",
-            idplaylist: null
+            artist:{},
+            idartist: null
         }
     }, 
     methods:{
-        loadPlaylist : function(idplaylist){
-            getPlaylist(idplaylist).then(data => {
-                this.tracks = data.tracks.data;
-                this.playlistTitle = data.title;
+        loadArtist : function(idArtist){
+            getArtist(idArtist).then(data => {
+                this.artist = data;
             })
         },
+
     },
     created(){
-        this.idplaylist = this.$route.params.idplaylist;
-        this.loadPlaylist(this.idplaylist)
+        this.idartist = this.$route.params.idartist;
+        this.loadArtist(this.idartist)
     }
 }
 </script>
@@ -38,7 +37,7 @@ export default {
 
 <style lang="scss" >
 
-    .page-search{
+    .page-artist{
         display: flex;
         flex-direction: column;
         height: 100%;

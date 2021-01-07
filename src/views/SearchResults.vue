@@ -1,6 +1,7 @@
 <template>
     <main class="page-search">
         <h1 class="main-title">Resultados de <span>{{query}}</span></h1>
+        <square v-show="isLoading"></square>
         <b-tabs>
             <b-tab id="tabAll" title="Todo" active>
                 <h2 class="title">Canciones <fa-icon icon="chevron-right" class="icon" /></h2>
@@ -49,11 +50,11 @@ export default {
             albumsTotal:null,
             artistsTotal:null,
             query: this.$route.params.q || '',
+            isLoading: false,
         }
     },  
     watch: {
         '$route.params.q': function (q) {
-            console.log("WATCHA")
             this.query = q
             this.updateTracks(q);
             this.updateAlbums(q);
@@ -65,10 +66,12 @@ export default {
         this.updateTracks(this.query);
         this.updateAlbums(this.query);
         this.updateArtists(this.query);
+        this.isLoading=true;
     },
     methods:{
         updateTracks : function(query){
                     getTracks(query).then(data => {
+                        this.isLoading=false;
                         this.tracks = data.data;
                         this.tracksTotal = data.total;
                         
@@ -78,14 +81,13 @@ export default {
                     getAlbums(query).then(data => {
                         this.albums = data.data;
                         this.albumsTotal = data.total;
-                        //console.log(this.albums)
+
                     })
                 },
         updateArtists : function(query){
                     getArtists(query).then(data => {
                         this.artists = data.data;
                         this.artistsTotal = data.total;
-                        //console.log(this.artists)
                     })
                 }
     }
